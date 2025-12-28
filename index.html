@@ -1,0 +1,2357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danni Santos | Posicionamento de Imagem Arquetípica</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #780016;
+            --primary-light: #9a0020;
+            --primary-dark: #5a0011;
+            --primary-darker: #3d000b;
+            --white: #ffffff;
+            --cream: #FEF1D9;
+            --cream-dark: #e6d4b8;
+            --gold: #C9A227;
+            --text-light: rgba(255,255,255,0.95);
+            --text-muted: rgba(255,255,255,0.75);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--primary);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .highlight {
+            color: var(--cream);
+        }
+
+        .italic {
+            font-style: italic;
+        }
+
+        /* ========================================
+           HERO FULLSCREEN COM IMAGEM DE FUNDO
+        ======================================== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(90, 0, 17, 0.85) 0%,
+                rgba(120, 0, 22, 0.75) 50%,
+                rgba(61, 0, 11, 0.9) 100%
+            );
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            max-width: 900px;
+            padding: 0 24px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            animation: fadeInDown 1s ease 0.2s both;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            line-height: 1.15;
+            margin-bottom: 28px;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-description {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-muted);
+            margin-bottom: 45px;
+            line-height: 1.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .hero-cta {
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            animation: bounce 2s infinite;
+        }
+
+        .hero-scroll svg {
+            width: 30px;
+            height: 30px;
+            color: var(--cream);
+            opacity: 0.6;
+        }
+
+        /* ========== BOTÕES ========== */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--white);
+            color: var(--primary);
+            padding: 20px 45px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+            background: var(--cream);
+        }
+
+        .btn-primary svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary:hover svg {
+            transform: translateX(6px);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            background: transparent;
+            color: var(--white);
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--cream);
+            color: var(--cream);
+        }
+
+        /* ========== SEÇÕES ========== */
+        .section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section-dark {
+            background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+
+        .section-darker {
+            background: var(--primary-darker);
+        }
+
+        .section-title {
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+            text-align: center;
+            margin-bottom: 24px;
+            line-height: 1.25;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto 70px;
+            line-height: 1.8;
+        }
+
+        /* ========================================
+           SEÇÃO COM FOTO DE FUNDO GRANDE (DIVISOR)
+        ======================================== */
+        .fullwidth-image-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .fullwidth-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .fullwidth-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
+        .fullwidth-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                rgba(90, 0, 17, 0.95) 0%,
+                rgba(120, 0, 22, 0.7) 50%,
+                rgba(90, 0, 17, 0.4) 100%
+            );
+        }
+
+        .fullwidth-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            padding: 60px 40px;
+        }
+
+        .fullwidth-content h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 25px;
+            line-height: 1.3;
+        }
+
+        .fullwidth-content p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            line-height: 1.9;
+            font-style: italic;
+        }
+
+        /* ========================================
+           LISTA DE PROBLEMAS
+        ======================================== */
+        .problems-section {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .problems-list {
+            list-style: none;
+        }
+
+        .problems-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            padding: 22px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            font-size: 1.05rem;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+        }
+
+        .problems-list li:hover {
+            padding-left: 10px;
+            border-color: rgba(255,100,100,0.3);
+        }
+
+        .problems-list li:last-child {
+            border-bottom: none;
+        }
+
+        .icon-x {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            background: rgba(255,100,100,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff6b6b;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .problems-list li:hover .icon-x {
+            background: rgba(255,100,100,0.25);
+            transform: scale(1.1);
+        }
+
+        .problems-image {
+            position: relative;
+        }
+
+        .problems-image img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.4);
+        }
+
+        .problems-image::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--cream);
+            border-radius: 24px;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .problems-image::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: -15px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--cream);
+            border-radius: 24px;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        /* ========================================
+           3 PILARES
+        ======================================== */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+            margin-top: 70px;
+        }
+
+        .pillar-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 50px 35px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--cream), var(--gold));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-12px);
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(254,241,217,0.3);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+        }
+
+        .pillar-card:hover::before {
+            opacity: 1;
+        }
+
+        .pillar-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            background: linear-gradient(180deg, var(--cream) 0%, rgba(254,241,217,0.3) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 25px;
+        }
+
+        .pillar-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 18px;
+            color: var(--white);
+        }
+
+        .pillar-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.75;
+        }
+
+        /* ========================================
+           ANTES x DEPOIS
+        ======================================== */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+        }
+
+        .comparison-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 55px 45px;
+            transition: all 0.3s ease;
+        }
+
+        .comparison-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .comparison-card.after {
+            background: rgba(254,241,217,0.06);
+            border-color: rgba(254,241,217,0.25);
+        }
+
+        .comparison-card h3 {
+            font-size: 2rem;
+            margin-bottom: 35px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .comparison-card.before h3 {
+            color: #ff8a8a;
+        }
+
+        .comparison-card.after h3 {
+            color: var(--cream);
+        }
+
+        .comparison-list {
+            list-style: none;
+        }
+
+        .comparison-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 16px 0;
+            font-size: 1rem;
+            color: var(--text-light);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .comparison-list li:last-child {
+            border-bottom: none;
+        }
+
+        .icon-check {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            background: rgba(100,200,100,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7ddb7d;
+            font-size: 12px;
+        }
+
+        /* ========================================
+           CARROSSEL DE DEPOIMENTOS EM VÍDEO
+        ======================================== */
+        .testimonials-section {
+            background: linear-gradient(180deg, var(--primary-darker) 0%, var(--primary-dark) 100%);
+            padding: 120px 0;
+        }
+
+        .testimonials-carousel {
+            position: relative;
+            overflow: hidden;
+            margin-top: 60px;
+        }
+
+        .testimonials-track {
+            display: flex;
+            gap: 30px;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .testimonial-video-card {
+            flex: 0 0 350px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-video-card:hover {
+            border-color: var(--cream);
+            transform: scale(1.02);
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .video-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-placeholder:hover img {
+            opacity: 1;
+        }
+
+        .play-button {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .play-button svg {
+            width: 24px;
+            height: 24px;
+            color: var(--primary);
+            margin-left: 4px;
+        }
+
+        .video-placeholder:hover .play-button {
+            transform: scale(1.1);
+            background: var(--cream);
+        }
+
+        .testimonial-info {
+            padding: 25px;
+        }
+
+        .testimonial-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+
+        .testimonial-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Navegação do Carrossel */
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .carousel-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            background: var(--cream);
+            border-color: var(--cream);
+        }
+
+        .carousel-btn svg {
+            width: 22px;
+            height: 22px;
+            color: var(--white);
+            transition: color 0.3s ease;
+        }
+
+        .carousel-btn:hover svg {
+            color: var(--primary);
+        }
+
+        /* ========================================
+           CARROSSEL DE FOTOS DE TRABALHOS
+        ======================================== */
+        .works-section {
+            padding: 100px 0;
+            background: var(--primary);
+            overflow: hidden;
+        }
+
+        .works-carousel {
+            display: flex;
+            gap: 20px;
+            animation: scrollWorks 30s linear infinite;
+        }
+
+        .works-carousel:hover {
+            animation-play-state: paused;
+        }
+
+        .work-item {
+            flex: 0 0 300px;
+            height: 400px;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .work-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .work-item:hover img {
+            transform: scale(1.1);
+        }
+
+        @keyframes scrollWorks {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ========================================
+           PARA QUEM É
+        ======================================== */
+        .for-who-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .for-who-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 22px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 35px 30px;
+            transition: all 0.4s ease;
+        }
+
+        .for-who-item:hover {
+            border-color: var(--cream);
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.04);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .for-who-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--cream);
+            opacity: 0.5;
+            line-height: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .for-who-item:hover .for-who-number {
+            opacity: 0.8;
+        }
+
+        .for-who-item p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           PROVA SOCIAL
+        ======================================== */
+        .social-proof {
+            text-align: center;
+            padding: 140px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-proof::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(254,241,217,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .proof-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(5rem, 12vw, 10rem);
+            font-weight: 700;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .proof-text {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 60px;
+        }
+
+        /* ========================================
+           SOBRE
+        ======================================== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 480px;
+            border-radius: 24px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+        }
+
+        .about-image::before {
+            content: '"';
+            position: absolute;
+            top: -40px;
+            left: -30px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 15rem;
+            color: var(--cream);
+            opacity: 0.1;
+            line-height: 1;
+            z-index: -1;
+        }
+
+        .about-content h2 {
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            margin-bottom: 30px;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 22px;
+        }
+
+        .about-highlight {
+            background: linear-gradient(135deg, rgba(254,241,217,0.08) 0%, rgba(254,241,217,0.03) 100%);
+            border-left: 4px solid var(--cream);
+            padding: 30px 35px;
+            margin: 35px 0;
+            border-radius: 0 16px 16px 0;
+        }
+
+        .about-highlight p {
+            color: var(--cream);
+            font-style: italic;
+            font-size: 1.2rem;
+            margin: 0;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* ========================================
+           FAQ
+        ======================================== */
+        .faq-section {
+            background: var(--primary-darker);
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 28px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .faq-question h4 {
+            font-size: 1.15rem;
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover h4 {
+            color: var(--cream);
+        }
+
+        .faq-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-icon svg {
+            width: 16px;
+            height: 16px;
+            color: var(--cream);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            background: var(--cream);
+        }
+
+        .faq-item.active .faq-icon svg {
+            color: var(--primary);
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding-bottom: 28px;
+        }
+
+        .faq-answer p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        /* ========================================
+           CTA FINAL
+        ======================================== */
+        .cta-section {
+            text-align: center;
+            padding: 150px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(254,241,217,0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 28px;
+            position: relative;
+        }
+
+        .cta-section > .container > p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 50px;
+            position: relative;
+        }
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            background: var(--primary-darker);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ========================================
+           ANIMAÇÕES
+        ======================================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-15px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-8px);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-delay-1 { transition-delay: 0.1s; }
+        .fade-in-delay-2 { transition-delay: 0.2s; }
+        .fade-in-delay-3 { transition-delay: 0.3s; }
+
+        /* ========================================
+           RESPONSIVO
+        ======================================== */
+        @media (max-width: 1024px) {
+            .problems-grid,
+            .comparison-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .pillars-grid,
+            .for-who-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .problems-image {
+                order: -1;
+            }
+
+            .about-image {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 80px 0;
+            }
+
+            .pillars-grid,
+            .for-who-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-primary {
+                padding: 18px 35px;
+                font-size: 0.85rem;
+            }
+
+            .comparison-card {
+                padding: 40px 30px;
+            }
+
+            .for-who-item {
+                padding: 28px 24px;
+            }
+
+            .fullwidth-image-section {
+                min-height: 60vh;
+            }
+
+            .fullwidth-content {
+                padding: 40px 24px;
+            }
+
+            .testimonial-video-card {
+                flex: 0 0 300px;
+            }
+
+            .video-placeholder {
+                height: 380px;
+            }
+
+            .about-content {
+                text-align: center;
+            }
+
+            .about-highlight {
+                border-left: none;
+                border-top: 4px solid var(--cream);
+                border-radius: 0 0 16px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-badge {
+                font-size: 0.7rem;
+                padding: 8px 20px;
+            }
+
+            .section-title {
+                font-size: 1.9rem;
+            }
+
+            .pillar-card {
+                padding: 40px 25px;
+            }
+
+            .proof-number {
+                font-size: 4rem;
+            }
+        }
+        
+/*========================================
+   CARROSSEL DE CLIENTES (ANTES X DEPOIS)
+======================================== */
+.clients-showcase {
+    margin-top: 80px;
+    text-align: center;
+}
+
+.clients-showcase h3 {
+    font-size: 1.8rem;
+    color: var(--cream);
+    margin-bottom: 40px;
+    font-weight: 500;
+}
+
+.clients-carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    cursor: grab;
+    padding: 20px 0;
+}
+
+.clients-carousel-wrapper:active {
+    cursor: grabbing;
+}
+
+.clients-carousel-track {
+    display: flex;
+    gap: 25px;
+    transition: transform 0.3s ease;
+    will-change: transform;
+}
+
+.client-card {
+    flex: 0 0 280px;
+    height: 380px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    transition: all 0.4s ease;
+}
+
+.client-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+}
+
+.client-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.client-card:hover img {
+    transform: scale(1.08);
+}
+
+.client-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.client-card:hover::after {
+    opacity: 1;
+}
+
+.client-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+    z-index: 2;
+}
+
+.client-card:hover .client-overlay {
+    transform: translateY(0);
+}
+
+.client-overlay span {
+    display: inline-block;
+    background: var(--cream);
+    color: var(--primary);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Indicador de arraste */
+.drag-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.drag-hint svg {
+    width: 20px;
+    height: 20px;
+    animation: dragHint 1.5s ease-in-out infinite;
+}
+
+@keyframes dragHint {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(10px); }
+}
+
+@media (max-width: 768px) {
+    .client-card {
+        flex: 0 0 240px;
+        height: 320px;
+    }
+    
+    .clients-showcase h3 {
+        font-size: 1.5rem;
+    }
+}
+/* ========================================
+   BARRA DE PROGRESSO
+======================================== */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--cream), var(--gold));
+    z-index: 9999;
+    transition: width 0.1s ease;
+    box-shadow: 0 0 10px rgba(254, 241, 217, 0.5);
+}
+/* ========================================
+   BOTÃO VOLTAR AO TOPO
+======================================== */
+.back-to-top {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    width: 55px;
+    height: 55px;
+    background: var(--cream);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.back-to-top:hover {
+    background: var(--white);
+    transform: translateX(-50%) translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.4);
+}
+
+.back-to-top svg {
+    width: 24px;
+    height: 24px;
+    color: var(--primary);
+    transition: transform 0.3s ease;
+}
+
+.back-to-top:hover svg {
+    transform: translateY(-3px);
+}
+
+/* Efeito de pulso sutil */
+.back-to-top::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--cream);
+    opacity: 0;
+    animation: pulse-ring 2s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(1);
+        opacity: 0.4;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* ========================================
+   SEÇÃO BASTIDORES - VÍDEOS
+======================================== */
+.backstage-section {
+    padding: 120px 0;
+    background: linear-gradient(180deg, var(--primary-dark) 0%, var(--primary-darker) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.backstage-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at top, rgba(254,241,217,0.05) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.backstage-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.backstage-badge {
+    display: inline-block;
+    background: rgba(254,241,217,0.1);
+    border: 1px solid rgba(254,241,217,0.2);
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 25px;
+}
+
+.backstage-header h2 {
+    font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+    margin-bottom: 20px;
+}
+
+.backstage-header p {
+    color: var(--text-muted);
+    font-size: 1.15rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.videos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.video-card {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    background: rgba(0,0,0,0.3);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    transition: all 0.4s ease;
+}
+
+.video-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+}
+
+.video-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    border-radius: 24px;
+    transition: border-color 0.3s ease;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.video-card:hover::before {
+    border-color: var(--cream);
+}
+
+.video-wrapper {
+    position: relative;
+    padding-top: 177.78%; /* Aspect ratio 9:16 para vídeos verticais */
+    width: 100%;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Label do vídeo */
+.video-label {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
+    padding: 15px 20px;
+    border-radius: 12px;
+    z-index: 3;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.video-card:hover .video-label {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.video-label span {
+    color: var(--cream);
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.video-label span::before {
+    content: '▶';
+    font-size: 0.7rem;
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+    .videos-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .videos-grid {
+        grid-template-columns: 1fr;
+        max-width: 350px;
+        margin: 0 auto;
+        gap: 30px;
+    }
+    
+    .backstage-section {
+        padding: 80px 0;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Barra de Progresso -->
+<div class="progress-bar" id="progressBar"></div>
+
+    <!-- ========================================
+         HERO FULLSCREEN COM IMAGEM DE FUNDO
+    ======================================== -->
+    <section class="hero">
+        <div class="hero-bg">
+            <!-- PLACEHOLDER: Imagem paisagem da Danni (1920x1080 ou similar) -->
+            <img src="https://i.postimg.cc/PqHQtkw7/1766882471360-019b6266-6664-7973-b825-de45f896b7aa.png" alt="Danni Santos - Posicionamento de Imagem">
+        </div>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <span class="hero-badge">✦ Posicionamento de Imagem Arquetípica</span>
+            <h1>Sua imagem está <br><span class="highlight italic">comunicando seu valor?</span></h1>
+            <p class="hero-description">
+                Vestir-se sem intenção custa caro. Descubra como criar uma imagem magnética que atrai clientes de alto padrão e te posiciona para ser bem paga como você merece.
+            </p>
+            <div class="hero-cta">
+                <a href="https://wa.me/557191278281?text=Olá! Tenho interesse em saber mais sobre seu trabalho." target="_blank" class="btn-primary fade-in">
+                    Quero me reposicionar
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-scroll">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SEÇÃO PROBLEMA
+    ======================================== -->
+    <section class="section problems-section">
+        <div class="container">
+            <h2 class="section-title fade-in">
+                Se você continua invisível, <br><span class="highlight">vai seguir sendo desvalorizada.</span>
+            </h2>
+            <p class="section-subtitle fade-in">
+                Você pode ser excelente no que faz. Mas enquanto sua imagem não comunicar seu valor...
+            </p>
+
+            <div class="problems-grid">
+                <ul class="problems-list">
+                    <li class="fade-in fade-in-delay-1">
+                        <span class="icon-x">✕</span>
+                        Você será vista como "mais uma" no mercado
+                    </li>
+                    <li class="fade-in fade-in-delay-1">
+                        <span class="icon-x">✕</span>
+                        Clientes vão continuar pedindo desconto
+                    </li>
+                    <li class="fade-in fade-in-delay-2">
+                        <span class="icon-x">✕</span>
+                        Oportunidades vão passar na sua frente
+                    </li>
+                    <li class="fade-in fade-in-delay-2">
+                        <span class="icon-x">✕</span>
+                        Alguém menos preparada ocupará o lugar que deveria ser seu
+                    </li>
+                    <li class="fade-in fade-in-delay-3">
+                        <span class="icon-x">✕</span>
+                        Você vai trabalhar muito e faturar menos do que merece
+                    </li>
+                    <li class="fade-in fade-in-delay-3">
+                        <span class="icon-x">✕</span>
+                        Vai começar a duvidar do seu próprio potencial
+                    </li>
+                </ul>
+                <div class="problems-image fade-in">
+                    <!-- PLACEHOLDER: Foto da Danni -->
+                    <img src="https://instagram.fssa20-1.fna.fbcdn.net/v/t51.82787-15/524723420_18509393959025918_7729871031672241692_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=111&ig_cache_key=MzY4NzQ4NjU4NjUzMTU5MDA1OTE4NTA5MzkzOTUzMDI1OTE4.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjExNTR4MjA0OC5zZHIuQzMifQ%3D%3D&_nc_ohc=8RqpS1RmyLUQ7kNvwF2LuuZ&_nc_oc=AdnkvyXph7-2XshRaAawgHpARyIzKBbdvJ5V6HVJPTHA42Bn3xLgLMGqQjVd35l1CPWyGE3GK3DDmvqqCbMAWurO&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fssa20-1.fna&_nc_gid=3Pwfk0FxLnk1fOKacT3r7g&oh=00_Afn8DO1jWaAGu3QwJIvC3-krl3-PucWuVWrGXHmqDHVU_w&oe=6956439A" alt="Posicionamento de Imagem">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SEÇÃO DIVISORA COM FOTO GRANDE
+    ======================================== -->
+    <section class="fullwidth-image-section">
+        <div class="fullwidth-bg">
+            <!-- PLACEHOLDER: Foto grande e impactante da Danni -->
+            <img src="https://i.postimg.cc/W3qkcW41/1766883585291-019b6277-4647-7963-a84d-367a6d6edebb.png" alt="Elegância é autoridade">
+        </div>
+        <div class="fullwidth-overlay"></div>
+        <div class="fullwidth-content fade-in">
+            <h2>Elegância não é só gosto. <br>É uma <span class="highlight">ferramenta de autoridade.</span></h2>
+            <p>
+                "Eu também já não sabia como ter uma imagem intencional. Até entender que a imagem é o primeiro contato que o mundo tem com você — e ela pode abrir ou fechar portas antes mesmo de você dizer uma palavra."
+            </p>
+        </div>
+    </section>
+
+    <!-- ========================================
+         3 PILARES
+    ======================================== -->
+    <section class="section section-darker">
+        <div class="container">
+            <h2 class="section-title fade-in">
+                Conheça o <span class="highlight italic">Código da Intenção Silenciosa</span>
+            </h2>
+            <p class="section-subtitle fade-in">
+                O método que transforma sua imagem em uma ferramenta estratégica de posicionamento.
+            </p>
+
+            <div class="pillars-grid">
+                <div class="pillar-card fade-in fade-in-delay-1">
+                    <div class="pillar-number">01</div>
+                    <h3>Arquétipos</h3>
+                    <p>Descubra qual arquétipo comunica sua essência e te diferencia no mercado. Sua personalidade se torna inesquecível.</p>
+                </div>
+                <div class="pillar-card fade-in fade-in-delay-2">
+                    <div class="pillar-number">02</div>
+                    <h3>Imagem Intencional</h3>
+                    <p>Cada detalhe da sua imagem passa a comunicar valor, autoridade e confiança para seus clientes ideais.</p>
+                </div>
+                <div class="pillar-card fade-in fade-in-delay-3">
+                    <div class="pillar-number">03</div>
+                    <h3>Posicionamento</h3>
+                    <p>Você deixa de ser vista como "mais uma" e passa a atrair clientes de alto padrão que pagam o que você vale.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         CARROSSEL DE FOTOS DE TRABALHOS
+    ======================================== -->
+    <section class="works-section">
+        <div class="works-carousel">
+            <!-- PLACEHOLDER: Fotos das clientes transformadas -->
+            <div class="work-item"><img src="https://instagram.fssa8-1.fna.fbcdn.net/v/t51.75761-15/502574783_18503390761025918_497795324062735026_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=106&ig_cache_key=MzY2NDMyOTYwMDk2OTQzNzg5NzE4NTAzMzkwNzU4MDI1OTE4.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjExNTR4MjA0OC5zZHIuQzMifQ%3D%3D&_nc_ohc=X0k-JolNwaIQ7kNvwHG_ba4&_nc_oc=AdlOEe2q-m0DiOFL_hw9uYVhb8pfPH_UvBANv1XsFMfMflArfCjKSp4ZaN5EXESrGdWvMYf0ayO33WJb3V0jZYTT&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fssa8-1.fna&_nc_gid=Ve8FDA2T_pBHDKjUw3oDfA&oh=00_AflZmPgZEGKm63c4gAie-KvsuZVqoyuZFp1mZ7TGo_FNvA&oe=695634C5" alt="Cliente 1"></div>
+            <div class="work-item"><img src="https://i.postimg.cc/ZqkHQdcX/IMG-8846-Aprimorado-NR.jpg" alt="Cliente 2"></div>
+            <div class="work-item"><img src="https://instagram.fssa20-1.fna.fbcdn.net/v/t51.82787-15/520535449_18506427508025918_8730804171550395092_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=110&ig_cache_key=MzY3NTQ0NDQ4MjM2ODA4NTQyODE4NTA2NDI3NTAyMDI1OTE4.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjExNTR4MjA0OC5zZHIuQzMifQ%3D%3D&_nc_ohc=VwdgACIIb0YQ7kNvwFMyCNX&_nc_oc=AdmTpXG_xPpV1v8qHg3onpvmIKQdbvn8LHS57vKNclIqFoPYbfhMhLcAzxeUdVlKuqXiW_Pvc2bafLRpghEw9pnz&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fssa20-1.fna&_nc_gid=fa4bVp-nLMPvugpf2STPww&oh=00_AfmUMNXKJkz-RZIrPEWkq7cB1sJ6YoyNm1wX2LWUiRbrhw&oe=69563DEF" alt="Cliente 3"></div>
+            <div class="work-item"><img src="https://instagram.fssa20-1.fna.fbcdn.net/v/t51.82787-15/523384833_18508936672025918_8606506959560666147_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=109&ig_cache_key=MzY4NTYxMzA5NDY0MzA2NjgzOA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjMzNzZ4NjAwMC5zZHIuQzMifQ%3D%3D&_nc_ohc=uvUu2klM6wAQ7kNvwGl2u2Y&_nc_oc=Adnv76IJfN-jIk09fBa7CZN2KNZtdcX_X521rAj8oFmYjiBentC0ZGEIRCMSm-IacTAvcu571kaS3Qz-8HpfK7HJ&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fssa20-1.fna&_nc_gid=3Pwfk0FxLnk1fOKacT3r7g&oh=00_AfnpFgUYzcHbqy5JszAn_vp_TKKAmBMOgVUKntU0GAS7Nw&oe=69564B9C" alt="Cliente 4"></div>
+            <div class="work-item"><img src="https://instagram.fssa20-1.fna.fbcdn.net/v/t51.82787-15/523404520_18508621426025918_4302130531360471595_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=103&ig_cache_key=MzY4NDQ5NDI5NDgzNzE2NDkwNjE4NTA4NjIxNDE3MDI1OTE4.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjMzMzh4NTkyOC5zZHIuQzMifQ%3D%3D&_nc_ohc=zzBHXPUi-4EQ7kNvwGFjvOP&_nc_oc=AdnBDhPcF1STatdSg2X4QVo2fLUzP0glF-zuQHNznKkNG-J9lvAdXjpKMSXn031zEj64OCzvGBf4PHWwecMZHEcM&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fssa20-1.fna&_nc_gid=3Pwfk0FxLnk1fOKacT3r7g&oh=00_AflIQbGF9CHQsnj-2DwUncN6FODvAjJ6inVqq2GB8dVSsw&oe=69566389" alt="Cliente 5"></div>
+            <div class="work-item"><img src="https://instagram.fssa20-1.fna.fbcdn.net/v/t51.82787-15/523561430_18508518823025918_5200963082286286721_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=102&ig_cache_key=MzY4NDAxNDk5NTczMDQ2OTEyMQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjExNTR4MjA0OC5zZHIuQzMifQ%3D%3D&_nc_ohc=CH3dSFFgj4oQ7kNvwE_HiLw&_nc_oc=Adl-BgSytO3bYc2CAfQxbDpGRNHYB1jxqBkNN53aPKgNz-DcnylgqkW2vn4ZjOJrTilKwcVIhMoXGisSsQrVOLDr&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fssa20-1.fna&_nc_gid=3Pwfk0FxLnk1fOKacT3r7g&oh=00_AfkWOwKazvr3vKJ9T4t4zd4mrjOxkBOA05c9cKJ4Q1V8KQ&oe=69564F61" alt="Cliente 6"></div>
+            <!-- Duplicados para loop infinito -->
+            <div class="work-item"><img src="https://instagram.fssa8-1.fna.fbcdn.net/v/t51.75761-15/502574783_18503390761025918_497795324062735026_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=106&ig_cache_key=MzY2NDMyOTYwMDk2OTQzNzg5NzE4NTAzMzkwNzU4MDI1OTE4.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjExNTR4MjA0OC5zZHIuQzMifQ%3D%3D&_nc_ohc=X0k-JolNwaIQ7kNvwHG_ba4&_nc_oc=AdlOEe2q-m0DiOFL_hw9uYVhb8pfPH_UvBANv1XsFMfMflArfCjKSp4ZaN5EXESrGdWvMYf0ayO33WJb3V0jZYTT&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fssa8-1.fna&_nc_gid=Ve8FDA2T_pBHDKjUw3oDfA&oh=00_AflZmPgZEGKm63c4gAie-KvsuZVqoyuZFp1mZ7TGo_FNvA&oe=695634C5" alt="Cliente 1"></div>
+            <div class="work-item"><img src="https://i.postimg.cc/ZqkHQdcX/IMG-8846-Aprimorado-NR.jpg" alt="Cliente 2"></div>
+            <div class="work-item"><img src="https://instagram.fssa20-1.fna.fbcdn.net/v/t51.82787-15/520535449_18506427508025918_8730804171550395092_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=110&ig_cache_key=MzY3NTQ0NDQ4MjM2ODA4NTQyODE4NTA2NDI3NTAyMDI1OTE4.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjExNTR4MjA0OC5zZHIuQzMifQ%3D%3D&_nc_ohc=VwdgACIIb0YQ7kNvwFMyCNX&_nc_oc=AdmTpXG_xPpV1v8qHg3onpvmIKQdbvn8LHS57vKNclIqFoPYbfhMhLcAzxeUdVlKuqXiW_Pvc2bafLRpghEw9pnz&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fssa20-1.fna&_nc_gid=fa4bVp-nLMPvugpf2STPww&oh=00_AfmUMNXKJkz-RZIrPEWkq7cB1sJ6YoyNm1wX2LWUiRbrhw&oe=69563DEF" alt="Cliente 3"></div>
+            <div class="work-item"><img src="https://instagram.fssa20-1.fna.fbcdn.net/v/t51.82787-15/523384833_18508936672025918_8606506959560666147_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=109&ig_cache_key=MzY4NTYxMzA5NDY0MzA2NjgzOA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjMzNzZ4NjAwMC5zZHIuQzMifQ%3D%3D&_nc_ohc=uvUu2klM6wAQ7kNvwGl2u2Y&_nc_oc=Adnv76IJfN-jIk09fBa7CZN2KNZtdcX_X521rAj8oFmYjiBentC0ZGEIRCMSm-IacTAvcu571kaS3Qz-8HpfK7HJ&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fssa20-1.fna&_nc_gid=3Pwfk0FxLnk1fOKacT3r7g&oh=00_AfnpFgUYzcHbqy5JszAn_vp_TKKAmBMOgVUKntU0GAS7Nw&oe=69564B9C" alt="Cliente 4"></div>
+            <div class="work-item"><img src="https://instagram.fssa20-1.fna.fbcdn.net/v/t51.82787-15/523404520_18508621426025918_4302130531360471595_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=103&ig_cache_key=MzY4NDQ5NDI5NDgzNzE2NDkwNjE4NTA4NjIxNDE3MDI1OTE4.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjMzMzh4NTkyOC5zZHIuQzMifQ%3D%3D&_nc_ohc=zzBHXPUi-4EQ7kNvwGFjvOP&_nc_oc=AdnBDhPcF1STatdSg2X4QVo2fLUzP0glF-zuQHNznKkNG-J9lvAdXjpKMSXn031zEj64OCzvGBf4PHWwecMZHEcM&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fssa20-1.fna&_nc_gid=3Pwfk0FxLnk1fOKacT3r7g&oh=00_AflIQbGF9CHQsnj-2DwUncN6FODvAjJ6inVqq2GB8dVSsw&oe=69566389" alt="Cliente 5"></div>
+            <div class="work-item"><img src="https://instagram.fssa20-1.fna.fbcdn.net/v/t51.82787-15/523561430_18508518823025918_5200963082286286721_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=102&ig_cache_key=MzY4NDAxNDk5NTczMDQ2OTEyMQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjExNTR4MjA0OC5zZHIuQzMifQ%3D%3D&_nc_ohc=CH3dSFFgj4oQ7kNvwE_HiLw&_nc_oc=Adl-BgSytO3bYc2CAfQxbDpGRNHYB1jxqBkNN53aPKgNz-DcnylgqkW2vn4ZjOJrTilKwcVIhMoXGisSsQrVOLDr&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fssa20-1.fna&_nc_gid=3Pwfk0FxLnk1fOKacT3r7g&oh=00_AfkWOwKazvr3vKJ9T4t4zd4mrjOxkBOA05c9cKJ4Q1V8KQ&oe=69564F61" alt="Cliente 6"></div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         ANTES x DEPOIS
+    ======================================== -->
+    <section class="section section-dark">
+        <div class="comparison-grid" style="margin-top: 70px;">
+            <div class="comparison-card before fade-in">
+                <h3>
+                    <span class="icon-x">✕</span>
+                    Sem a Consultoria
+                </h3>
+                <ul class="comparison-list">
+                    <li><span class="icon-x">✕</span> Imagem sem intenção e sem estratégia</li>
+                    <li><span class="icon-x">✕</span> Clientes que pedem desconto</li>
+                    <li><span class="icon-x">✕</span> Invisível no seu mercado</li>
+                    <li><span class="icon-x">✕</span> Cobrando menos do que vale</li>
+                    <li><span class="icon-x">✕</span> Insegura sobre como se posicionar</li>
+                    <li><span class="icon-x">✕</span> Portas fechadas e oportunidades perdidas</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card after fade-in">
+                <h3>
+                    <span class="icon-check">✓</span>
+                    Com a Consultoria
+                </h3>
+                <ul class="comparison-list">
+                    <li><span class="icon-check">✓</span> Imagem que comunica valor e autoridade</li>
+                    <li><span class="icon-check">✓</span> Clientes de alto padrão que valorizam você</li>
+                    <li><span class="icon-check">✓</span> Referência no seu nicho</li>
+                    <li><span class="icon-check">✓</span> Sendo bem paga como merece</li>
+                    <li><span class="icon-check">✓</span> Confiança e clareza no seu posicionamento</li>
+                    <li><span class="icon-check">✓</span> Portas abertas e oportunidades atraídas</li>
+                </ul>
+            </div>
+        </div>
+                    <!-- CARROSSEL DE CLIENTES TRANSFORMADAS -->
+            <div class="clients-showcase fade-in">
+                <h3>Veja algumas <span class="highlight italic">transformações</span></h3>
+                
+                <div class="clients-carousel-wrapper" id="clientsCarousel">
+                    <div class="clients-carousel-track" id="clientsTrack">
+                        <!-- Cliente 1 -->
+                        <div class="client-card">
+                            <img src="https://instagram.fssa20-1.fna.fbcdn.net/v/t51.82787-15/517594938_18505727086025918_7650768806880891517_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ig_cache_key=MzY3MjU5MjY5NjQ5NDE0MzA5Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEwODB4MTM0OS5zZHIuQzMifQ%3D%3D&_nc_ohc=xzvF3bNHoV8Q7kNvwGZ-mrT&_nc_oc=AdkKZSwbeT35RD6aNCSu6YkG1HGVGaiyMSTVG4oyg-T6pXGjCITXFdZRGqKxXpWFLfVaCov5ODmGPnyXpbkG-H3m&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fssa20-1.fna&_nc_gid=fa4bVp-nLMPvugpf2STPww&oh=00_AfmrAKAgilZQVlcszU4FEE9NGsnj0eqr6V4AKK05GVu_SQ&oe=69565B10" alt="Cliente transformada">
+                            <div class="client-overlay">
+                                <span>✨ Reposicionada</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Cliente 2 -->
+                        <div class="client-card">
+                            <img src="https://instagram.fssa20-1.fna.fbcdn.net/v/t51.82787-15/516289260_18505727116025918_5154559200336582825_n.jpg?stp=dst-jpg_e35_p750x750_sh0.08_tt6&_nc_cat=110&ig_cache_key=MzY3MjU5MjY5NjQ5NDIzNjY0Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEwODB4MTM0OS5zZHIuQzMifQ%3D%3D&_nc_ohc=LYsuDs1LCfkQ7kNvwHvBkvh&_nc_oc=Adm-v0OpoRNAnHmfAx4R_L6IwK5b2iNin8hsvShIuqTVctP_GScyWosM4anaDZJwydnQ6rJYBiF91c9Q7ty8M28P&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fssa20-1.fna&_nc_gid=fa4bVp-nLMPvugpf2STPww&oh=00_AfnOcj--Y_7gD0nwoJgKQ_dNnF_fZe0JJwsfnMLAWqJTEg&oe=69563935" alt="Cliente transformada">
+                            <div class="client-overlay">
+                                <span>✨ Reposicionada</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Cliente 3 -->
+                        <div class="client-card">
+                            <img src="https://instagram.fssa20-1.fna.fbcdn.net/v/t51.82787-15/516847564_18505727107025918_8448716918522924345_n.jpg?stp=dst-jpg_e35_p750x750_sh0.08_tt6&_nc_cat=109&ig_cache_key=MzY3MjU5MjY5NjYwMzMwNzQ5MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEwODB4MTM0OS5zZHIuQzMifQ%3D%3D&_nc_ohc=WQnh9j3c8lIQ7kNvwGMU2eU&_nc_oc=AdnJUsyG3QwF25j6t70I1BjhV4DKrdB4NS8lOONj06LObTnsfzl8IGFuCJBWDX8a9mZ47HycDmzKMdZriaDUHQNQ&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fssa20-1.fna&_nc_gid=fa4bVp-nLMPvugpf2STPww&oh=00_AfkMkQ3b7Fwi14NLej7Rt9VHgDIoDKMq_GRCU36VilDT_A&oe=69563E02" alt="Cliente transformada">
+                            <div class="client-overlay">
+                                <span>✨ Reposicionada</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Cliente 4 -->
+                        <div class="client-card">
+                            <img src="https://instagram.fssa20-1.fna.fbcdn.net/v/t51.82787-15/517334463_18505727095025918_173725640070841755_n.jpg?stp=dst-jpg_e35_p750x750_sh0.08_tt6&_nc_cat=105&ig_cache_key=MzY3MjU5MjY5NjQ4NTg2MzIzNw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEwODB4MTM0OS5zZHIuQzMifQ%3D%3D&_nc_ohc=Nd26Hw-Ge6cQ7kNvwG_k3eW&_nc_oc=AdkXHuXZTrZT7mvojlUKcGkgULqMEM0MzucWuCGurebyfLVelkxXYbOdVLcV6CEMYlu5t5RAw8feJrSnXpjwyasJ&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fssa20-1.fna&_nc_gid=fa4bVp-nLMPvugpf2STPww&oh=00_Afn0DAwckoqwSQlZIRsWOmy4RvndPoCjQHBQ7d5Veobx7A&oe=69566040" alt="Cliente transformada">
+                            <div class="client-overlay">
+                                <span>✨ Reposicionada</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Duplicados para loop infinito -->
+                        <div class="client-card">
+                            <img src="https://instagram.fssa20-1.fna.fbcdn.net/v/t51.82787-15/517594938_18505727086025918_7650768806880891517_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ig_cache_key=MzY3MjU5MjY5NjQ5NDE0MzA5Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEwODB4MTM0OS5zZHIuQzMifQ%3D%3D&_nc_ohc=xzvF3bNHoV8Q7kNvwGZ-mrT&_nc_oc=AdkKZSwbeT35RD6aNCSu6YkG1HGVGaiyMSTVG4oyg-T6pXGjCITXFdZRGqKxXpWFLfVaCov5ODmGPnyXpbkG-H3m&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fssa20-1.fna&_nc_gid=fa4bVp-nLMPvugpf2STPww&oh=00_AfmrAKAgilZQVlcszU4FEE9NGsnj0eqr6V4AKK05GVu_SQ&oe=69565B10" alt="Cliente transformada">
+                            <div class="client-overlay">
+                                <span>✨ Reposicionada</span>
+                            </div>
+                        </div>
+                        
+                        <div class="client-card">
+                            <img src="https://instagram.fssa20-1.fna.fbcdn.net/v/t51.82787-15/516289260_18505727116025918_5154559200336582825_n.jpg?stp=dst-jpg_e35_p750x750_sh0.08_tt6&_nc_cat=110&ig_cache_key=MzY3MjU5MjY5NjQ5NDIzNjY0Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEwODB4MTM0OS5zZHIuQzMifQ%3D%3D&_nc_ohc=LYsuDs1LCfkQ7kNvwHvBkvh&_nc_oc=Adm-v0OpoRNAnHmfAx4R_L6IwK5b2iNin8hsvShIuqTVctP_GScyWosM4anaDZJwydnQ6rJYBiF91c9Q7ty8M28P&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fssa20-1.fna&_nc_gid=fa4bVp-nLMPvugpf2STPww&oh=00_AfnOcj--Y_7gD0nwoJgKQ_dNnF_fZe0JJwsfnMLAWqJTEg&oe=69563935" alt="Cliente transformada">
+                            <div class="client-overlay">
+                                <span>✨ Reposicionada</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drag-hint">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    </svg>
+                    Arraste para ver mais
+                </div>
+            </div>
+    </section>
+
+    <!-- ========================================
+         CARROSSEL DE DEPOIMENTOS EM VÍDEO
+    ======================================== -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title fade-in">
+                Veja o que elas dizem sobre a <span class="highlight">transformação</span>
+            </h2>
+            <p class="section-subtitle fade-in">
+                Mulheres que se reposicionaram e passaram a ser valorizadas como merecem.
+            </p>
+
+            <div class="testimonials-carousel">
+                <div class="testimonials-track" id="testimonialsTrack">
+                    <!-- Depoimento 1 -->
+                    <div class="testimonial-video-card">
+                        <div class="video-placeholder">
+                            <!-- PLACEHOLDER: Thumbnail do vídeo -->
+                            <img src="https://instagram.fssa20-1.fna.fbcdn.net/v/t51.82787-15/553721038_18043938341674794_5050973445272692323_n.jpg?stp=dst-jpg_e35_p750x750_sh0.08_tt6&_nc_cat=103&ig_cache_key=MjkzODIwMDA5NTgyNTk5NzA0OA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjgyOHgxNDcyLnNkci5DMyJ9&_nc_ohc=kStef-8Wp84Q7kNvwFIxM1i&_nc_oc=AdlmkfrtszmjvdkgZcLLrji5NmZPnTnEXzi7mbEb7uJOwhJa8Y7VQoG2bnQh6UAEYd_kvMvIV6Yz0bWWU_xvbDog&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fssa20-1.fna&_nc_gid=EzHM-LkdQaQa94HBRaNcJA&oh=00_Afno5ywkES73iWcmM9H_LWXh8eClZVPx5x9DgPjsT_FjdA&oe=6956426B" alt="Depoimento">
+                            <div class="play-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Maria Silva</h4>
+                            <p>Empresária</p>
+                        </div>
+                    </div>
+
+                    <!-- Depoimento 2 -->
+                    <div class="testimonial-video-card">
+                        <div class="video-placeholder">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=500&fit=crop" alt="Depoimento">
+                            <div class="play-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Ana Costa</h4>
+                            <p>Coach de Carreira</p>
+                        </div>
+                    </div>
+
+                    <!-- Depoimento 3 -->
+                    <div class="testimonial-video-card">
+                        <div class="video-placeholder">
+                            <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&h=500&fit=crop" alt="Depoimento">
+                            <div class="play-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Carla Santos</h4>
+                            <p>Advogada</p>
+                        </div>
+                    </div>
+
+                    <!-- Depoimento 4 -->
+                    <div class="testimonial-video-card">
+                        <div class="video-placeholder">
+                            <img src="https://instagram.fssa20-1.fna.fbcdn.net/v/t51.82787-15/553721038_18043938341674794_5050973445272692323_n.jpg?stp=dst-jpg_e35_p750x750_sh0.08_tt6&_nc_cat=103&ig_cache_key=MjkzODIwMDA5NTgyNTk5NzA0OA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjgyOHgxNDcyLnNkci5DMyJ9&_nc_ohc=kStef-8Wp84Q7kNvwFIxM1i&_nc_oc=AdlmkfrtszmjvdkgZcLLrji5NmZPnTnEXzi7mbEb7uJOwhJa8Y7VQoG2bnQh6UAEYd_kvMvIV6Yz0bWWU_xvbDog&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fssa20-1.fna&_nc_gid=EzHM-LkdQaQa94HBRaNcJA&oh=00_Afno5ywkES73iWcmM9H_LWXh8eClZVPx5x9DgPjsT_FjdA&oe=6956426B" alt="Depoimento">
+                            <div class="play-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Julia Mendes</h4>
+                            <p>Consultora Financeira</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-nav">
+                <button class="carousel-btn" id="prevBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <button class="carousel-btn" id="nextBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+     BASTIDORES DA TRANSFORMAÇÃO
+======================================== -->
+<section class="backstage-section">
+    <div class="container">
+        <div class="backstage-header fade-in">
+            <span class="backstage-badge">✦ Por trás das lentes</span>
+            <h2>Bastidores da <span class="highlight italic">Transformação</span></h2>
+            <p>Acompanhe momentos reais do processo que transforma a imagem e o posicionamento das minhas clientes.</p>
+        </div>
+
+        <div class="videos-grid">
+            <!-- Vídeo 1 -->
+            <div class="video-card fade-in">
+                <div class="video-wrapper">
+                    <iframe 
+                        src="https://player.vimeo.com/video/1149762651?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&background=1" 
+                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        title="Bastidores 1">
+                    </iframe>
+                </div>
+                <div class="video-label">
+                    <span>Momento de transformação</span>
+                </div>
+            </div>
+
+            <!-- Vídeo 2 -->
+            <div class="video-card fade-in">
+                <div class="video-wrapper">
+                    <iframe 
+                        src="https://player.vimeo.com/video/1149762631?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&background=1" 
+                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        title="Bastidores 2">
+                    </iframe>
+                </div>
+                <div class="video-label">
+                    <span>Valor se reconhece</span>
+                </div>
+            </div>
+
+            <!-- Vídeo 3 -->
+            <div class="video-card fade-in">
+                <div class="video-wrapper">
+                    <iframe 
+                        src="https://player.vimeo.com/video/1149762617?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&background=1" 
+                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        title="Bastidores 3">
+                    </iframe>
+                </div>
+                <div class="video-label">
+                    <span>Posicionamento intencional</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- ========================================
+         PARA QUEM É
+    ======================================== -->
+    <section class="section section-dark">
+        <div class="container">
+            <h2 class="section-title fade-in">
+                Para quem é a <span class="highlight italic">Consultoria?</span>
+            </h2>
+            <p class="section-subtitle fade-in">
+                Para mulheres que desejam ser mais valorizadas e bem pagas.
+            </p>
+
+            <div class="for-who-grid">
+                <div class="for-who-item fade-in">
+                    <div class="for-who-number">01</div>
+                    <p>Mulheres que querem atrair clientes de alto padrão</p>
+                </div>
+                <div class="for-who-item fade-in">
+                    <div class="for-who-number">02</div>
+                    <p>Empreendedoras que desejam cobrar mais pelo seu trabalho</p>
+                </div>
+                <div class="for-who-item fade-in">
+                    <div class="for-who-number">03</div>
+                    <p>Profissionais que querem ser reconhecidas como referência</p>
+                </div>
+                <div class="for-who-item fade-in">
+                    <div class="for-who-number">04</div>
+                    <p>Mulheres que sentem que sua imagem não comunica seu valor</p>
+                </div>
+                <div class="for-who-item fade-in">
+                    <div class="for-who-number">05</div>
+                    <p>Quem deseja ter mais confiança e presença profissional</p>
+                </div>
+                <div class="for-who-item fade-in">
+                    <div class="for-who-number">06</div>
+                    <p>Mulheres prontas para se posicionar de forma intencional</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         PROVA SOCIAL
+    ======================================== -->
+    <section class="social-proof section-darker">
+        <div class="container">
+            <div class="proof-number fade-in">+300</div>
+            <p class="proof-text fade-in">mulheres já reposicionadas através da Imagem Arquetípica</p>
+           <a href="https://wa.me/557191278281?text=Olá! Tenho interesse em saber mais sobre seu trabalho." target="_blank" class="btn-primary fade-in">
+                Quero fazer parte dessa transformação
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SOBRE A DANNI
+    ======================================== -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image fade-in">
+                    <!-- PLACEHOLDER: Foto profissional da Danni -->
+                    <img src="https://i.postimg.cc/rmmyWK4m/1766881635591-019b6259-a976-7c85-8b82-e59bd11d72d7.png" alt="Danni Santos">
+                </div>
+                <div class="about-content">
+                    <h2 class="fade-in">Quem é <span class="highlight italic">Danni Santos?</span></h2>
+                    <p class="fade-in">
+                        Especialista em Fotografia e Posicionamento de Imagem Arquetípica, Danni já ajudou mais de 300 mulheres a se reposicionarem no mercado através da imagem.
+                    </p>
+                    <p class="fade-in">
+                        Criadora do método "Código da Intenção Silenciosa", ela une fotografia estratégica, arquétipos e posicionamento para transformar a forma como suas clientes são vistas — e pagas — pelo mercado.
+                    </p>
+                    <div class="about-highlight fade-in">
+                        <p>"Sua imagem precisa comunicar valor. Quando você entende isso, tudo muda."</p>
+                    </div>
+                    <p class="fade-in">
+                        Através de consultorias e ensaios de branding, Danni ensina mulheres a criarem uma marca única — e serem valorizadas por isso.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FAQ
+    ======================================== -->
+    <section class="section faq-section">
+        <div class="container">
+            <h2 class="section-title fade-in">
+                Perguntas <span class="highlight">Frequentes</span>
+            </h2>
+
+            <div class="faq-grid" style="margin-top: 60px;">
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <h4>Para quem é a Consultoria de Imagem Arquetípica?</h4>
+                        <div class="faq-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>A consultoria é para mulheres empreendedoras e profissionais que desejam se posicionar com mais autoridade, atrair clientes de alto padrão e serem bem pagas pelo valor que entregam.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <h4>Preciso ter experiência com arquétipos?</h4>
+                        <div class="faq-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Não! Durante a consultoria, eu vou te guiar em todo o processo de descoberta do seu arquétipo e como aplicá-lo na sua imagem e posicionamento.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <h4>Como funciona a consultoria?</h4>
+                        <div class="faq-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Fazemos uma análise completa do seu perfil, identificamos seu arquétipo dominante e criamos uma estratégia personalizada de imagem e posicionamento para o seu negócio.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <h4>Em quanto tempo vejo resultados?</h4>
+                        <div class="faq-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Muitas clientes já percebem mudanças na forma como são percebidas logo nas primeiras semanas. A transformação é gradual, mas os primeiros sinais aparecem rapidamente.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <h4>O ensaio fotográfico está incluso?</h4>
+                        <div class="faq-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Temos diferentes pacotes que incluem ou não o ensaio de branding. Durante nossa conversa, vou te explicar as opções disponíveis para o seu momento.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         CTA FINAL
+    ======================================== -->
+    <section class="cta-section section-dark">
+        <div class="container">
+            <h2 class="fade-in">Pronta para ser <span class="highlight italic">uma Marca Única?</span></h2>
+            <p class="fade-in">
+                Dê o primeiro passo para atrair clientes de alto padrão e ser bem paga como você merece.
+            </p>
+            <a href="https://wa.me/557191278281?text=Olá! Tenho interesse em saber mais sobre seu trabalho." target="_blank" class="btn-primary fade-in">
+                Falar com a Danni
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
+    <footer>
+        <div class="container">
+            <p>Danni Santos © 2025 — Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <!-- ========================================
+         SCRIPTS
+    ======================================== -->
+    <script>
+        // ===== Animação Fade In ao Scroll =====
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -80px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // ===== Carrossel de Depoimentos =====
+        const track = document.getElementById('testimonialsTrack');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentIndex = 0;
+        const cardWidth = 380; // largura do card + gap
+
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            const maxIndex = track.children.length - 3;
+            if (currentIndex < maxIndex) {
+                currentIndex++;
+                updateCarousel();
+            } else {
+                currentIndex = 0;
+                updateCarousel();
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+
+        // ===== FAQ Accordion =====
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Fecha todos
+                faqItems.forEach(i => i.classList.remove('active'));
+                
+                // Abre o clicado (se não estava aberto)
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // ===== Parallax suave no Hero (opcional) =====
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroImg = document.querySelector('.hero-bg img');
+            if (heroImg && scrolled < window.innerHeight) {
+                heroImg.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
+        // ===== Carrossel de Clientes com Drag =====
+const clientsCarousel = document.getElementById('clientsCarousel');
+const clientsTrack = document.getElementById('clientsTrack');
+
+if (clientsCarousel && clientsTrack) {
+    let isDragging = false;
+    let startPos = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+    let animationID = 0;
+
+    // Autoplay
+    let autoplayInterval = setInterval(() => {
+        currentTranslate -= 1;
+        clientsTrack.style.transform = `translateX(${currentTranslate}px)`;
+        
+        // Reset quando chegar no fim
+        const trackWidth = clientsTrack.scrollWidth / 2;
+        if (Math.abs(currentTranslate) >= trackWidth) {
+            currentTranslate = 0;
+        }
+        prevTranslate = currentTranslate;
+    }, 30);
+
+    // Pausar no hover
+    clientsCarousel.addEventListener('mouseenter', () => {
+        clearInterval(autoplayInterval);
+    });
+
+    clientsCarousel.addEventListener('mouseleave', () => {
+        if (!isDragging) {
+            autoplayInterval = setInterval(() => {
+                currentTranslate -= 1;
+                clientsTrack.style.transform = `translateX(${currentTranslate}px)`;
+                
+                const trackWidth = clientsTrack.scrollWidth / 2;
+                if (Math.abs(currentTranslate) >= trackWidth) {
+                    currentTranslate = 0;
+                }
+                prevTranslate = currentTranslate;
+            }, 30);
+        }
+    });
+
+    // Drag functionality
+    clientsCarousel.addEventListener('mousedown', dragStart);
+    clientsCarousel.addEventListener('mousemove', drag);
+    clientsCarousel.addEventListener('mouseup', dragEnd);
+    clientsCarousel.addEventListener('mouseleave', dragEnd);
+
+    // Touch events
+    clientsCarousel.addEventListener('touchstart', dragStart);
+    clientsCarousel.addEventListener('touchmove', drag);
+    clientsCarousel.addEventListener('touchend', dragEnd);
+
+    function dragStart(e) {
+        isDragging = true;
+        startPos = getPositionX(e);
+        clientsCarousel.style.cursor = 'grabbing';
+        clearInterval(autoplayInterval);
+    }
+
+    function drag(e) {
+        if (!isDragging) return;
+        const currentPosition = getPositionX(e);
+        const diff = currentPosition - startPos;
+        currentTranslate = prevTranslate + diff;
+        clientsTrack.style.transform = `translateX(${currentTranslate}px)`;
+    }
+
+    function dragEnd() {
+        isDragging = false;
+        prevTranslate = currentTranslate;
+        clientsCarousel.style.cursor = 'grab';
+    }
+
+    function getPositionX(e) {
+        return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+    }
+}
+
+// ===== Barra de Progresso =====
+const progressBar = document.getElementById('progressBar');
+
+window.addEventListener('scroll', () => {
+    const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (window.scrollY / windowHeight) * 100;
+    progressBar.style.width = scrolled + '%';
+});
+
+// ===== Botão Voltar ao Topo =====
+const backToTopBtn = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+        backToTopBtn.classList.add('visible');
+    } else {
+        backToTopBtn.classList.remove('visible');
+    }
+});
+
+backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+    </script>
+
+<!-- Botão Voltar ao Topo -->
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+    </svg>
+</button>
+</body>
+</html>
